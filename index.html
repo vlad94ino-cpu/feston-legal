@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Feston — Gana la noche, sube al trono</title>
+<meta name="description" content="Feston convierte tus noches en un juego: haz check-in en tus locales, gana puntos y conquista el ranking de la noche.">
+<meta property="og:title" content="Feston — El Rey de la Noche">
+<meta property="og:description" content="Haz check-in, gana puntos y conquista el ranking de tu ciudad y tu género musical.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#1a1a2e; --bg2:#2d1b4e; --primary:#e94560; --gold:#ffd369; --purple:#533483;
+    --text:#ffffff; --muted:#a0a0b8; --card:#22223d;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--text);
+    background:radial-gradient(1200px 600px at 50% -10%, #2d1b4e 0%, #1a1a2e 60%);min-height:100vh}
+  .wrap{max-width:960px;margin:0 auto;padding:24px}
+  header{display:flex;align-items:center;gap:12px;padding:24px 0}
+  .logo{width:48px;height:48px;border:2px solid var(--gold);border-radius:14px;background:var(--card);
+    display:flex;align-items:center;justify-content:center;position:relative}
+  .logo b{font-family:'Archivo Black';color:var(--gold);font-size:26px}
+  .logo .crown{position:absolute;top:-14px;font-size:16px;color:var(--gold)}
+  .brand{font-family:'Archivo Black';font-size:22px;letter-spacing:1px}
+  .hero{text-align:center;padding:60px 0 40px}
+  .hero h1{font-family:'Archivo Black';font-size:clamp(40px,9vw,84px);line-height:1;margin-bottom:18px}
+  .hero .tag{color:var(--gold);font-weight:800;letter-spacing:2px;text-transform:uppercase;font-size:clamp(13px,2.6vw,18px);margin-bottom:26px}
+  .hero p.lead{color:var(--muted);font-size:18px;max-width:620px;margin:0 auto 34px;line-height:1.6}
+  .pills{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-bottom:40px}
+  .pill{padding:9px 16px;border-radius:999px;font-weight:700;font-size:14px}
+  .pill.red{background:var(--primary)} .pill.pur{background:var(--purple)}
+  .pill.out{border:2px solid var(--gold);color:var(--gold)}
+  .cta{display:inline-block;background:var(--primary);color:#fff;font-weight:800;padding:16px 34px;
+    border-radius:14px;text-decoration:none;font-size:16px;box-shadow:0 0 24px rgba(233,69,96,.5)}
+  .soon{color:var(--muted);font-size:14px;margin-top:14px}
+  .features{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;margin:50px 0}
+  .feat{background:var(--card);border:1px solid #2f2f52;border-radius:16px;padding:22px}
+  .feat h3{color:var(--gold);font-size:17px;margin-bottom:8px}
+  .feat p{color:var(--muted);font-size:14px;line-height:1.5}
+  footer{border-top:1px solid #2f2f52;margin-top:50px;padding:28px 0;text-align:center;color:var(--muted);font-size:14px}
+  footer a{color:var(--gold);text-decoration:none;margin:0 10px}
+  footer a:hover{text-decoration:underline}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div class="logo"><span class="crown">&#9819;</span><b>F</b></div>
+    <span class="brand">FESTON</span>
+  </header>
+
+  <section class="hero">
+    <h1>FESTON</h1>
+    <div class="tag">Gana la noche, sube al trono</div>
+    <p class="lead">Feston convierte tus noches en un juego. Haz check-in en los locales donde sales,
+      gana puntos, sube de nivel y compite por ser el Rey (o Duque) de cada género musical y de tu ciudad.</p>
+    <div class="pills">
+      <span class="pill red">Check-in + puntos</span>
+      <span class="pill pur">Rankings en tiempo real</span>
+      <span class="pill out">Rey de la noche</span>
+    </div>
+    <a class="cta" href="#" aria-disabled="true">Próximamente en Google Play</a>
+    <div class="soon">Estamos puliendo los últimos detalles. ¡Muy pronto!</div>
+  </section>
+
+  <section class="features">
+    <div class="feat"><h3>Check-in con foto</h3><p>Marca dónde estás con GPS y comparte el ambiente con una foto opcional.</p></div>
+    <div class="feat"><h3>Rankings por ciudad y género</h3><p>Compite en tiempo real y gana títulos de nobleza: Rey, Duque, Aspirante.</p></div>
+    <div class="feat"><h3>Locales candentes</h3><p>Descubre qué sitios están que arden ahora mismo y quién está saliendo.</p></div>
+    <div class="feat"><h3>Social</h3><p>Feed, menciones, guiños y retos para vivir la noche con la comunidad.</p></div>
+  </section>
+
+  <footer>
+    <p>&copy; <span id="y"></span> Feston · VLIN Studio</p>
+    <p style="margin-top:10px">
+      <a href="privacidad.html">Política de Privacidad</a> ·
+      <a href="terminos.html">Términos de Uso</a> ·
+      <a href="mailto:soporte@feston.es">soporte@feston.es</a>
+    </p>
+  </footer>
+</div>
+<script>document.getElementById('y').textContent=new Date().getFullYear();</script>
+</body>
+</html>
