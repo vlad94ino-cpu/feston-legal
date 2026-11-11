@@ -1,88 +1,320 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Feston — Gana la noche, sube al trono</title>
-<meta name="description" content="Feston convierte tus noches en un juego: haz check-in en tus locales, gana puntos y conquista el ranking de la noche.">
-<meta property="og:title" content="Feston — El Rey de la Noche">
-<meta property="og:description" content="Haz check-in, gana puntos y conquista el ranking de tu ciudad y tu género musical.">
-<meta property="og:type" content="website">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Feston — Sé de los primeros. Hazte tester</title>
+<meta name="description" content="Feston: haz check-in en locales, gana puntos, sube en el ranking y gana la noche. Apúntate como tester y pruébala antes que nadie." />
+<meta property="og:title" content="Feston — Hazte tester" />
+<meta property="og:description" content="Prueba Feston antes que nadie. Check-in, puntos, rankings y retos. Gana la noche, sube al trono." />
+<meta property="og:type" content="website" />
+<meta name="theme-color" content="#1a1a2e" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet" />
 <style>
-  :root{
-    --bg:#1a1a2e; --bg2:#2d1b4e; --primary:#e94560; --gold:#ffd369; --purple:#533483;
-    --text:#ffffff; --muted:#a0a0b8; --card:#22223d;
+  :root {
+    --bg: #1a1a2e;
+    --bg2: #2d1b4e;
+    --surface: #16213e;
+    --card: #0d1b3e;
+    --primary: #e94560;
+    --primary-dim: #c73451;
+    --secondary: #533483;
+    --accent: #ffd369;
+    --text: #ffffff;
+    --text-2: #a0a0b8;
+    --text-muted: #6b6b80;
+    --border: #2a2a4a;
+    --ok: #4ecca3;
+    --err: #ef5350;
   }
-  *{box-sizing:border-box;margin:0;padding:0}
-  body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--text);
-    background:radial-gradient(1200px 600px at 50% -10%, #2d1b4e 0%, #1a1a2e 60%);min-height:100vh}
-  .wrap{max-width:960px;margin:0 auto;padding:24px}
-  header{display:flex;align-items:center;gap:12px;padding:24px 0}
-  .logo{width:48px;height:48px;border:2px solid var(--gold);border-radius:14px;background:var(--card);
-    display:flex;align-items:center;justify-content:center;position:relative}
-  .logo b{font-family:'Archivo Black';color:var(--gold);font-size:26px}
-  .logo .crown{position:absolute;top:-14px;font-size:16px;color:var(--gold)}
-  .brand{font-family:'Archivo Black';font-size:22px;letter-spacing:1px}
-  .hero{text-align:center;padding:60px 0 40px}
-  .hero h1{font-family:'Archivo Black';font-size:clamp(40px,9vw,84px);line-height:1;margin-bottom:18px}
-  .hero .tag{color:var(--gold);font-weight:800;letter-spacing:2px;text-transform:uppercase;font-size:clamp(13px,2.6vw,18px);margin-bottom:26px}
-  .hero p.lead{color:var(--muted);font-size:18px;max-width:620px;margin:0 auto 34px;line-height:1.6}
-  .pills{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-bottom:40px}
-  .pill{padding:9px 16px;border-radius:999px;font-weight:700;font-size:14px}
-  .pill.red{background:var(--primary)} .pill.pur{background:var(--purple)}
-  .pill.out{border:2px solid var(--gold);color:var(--gold)}
-  .cta{display:inline-block;background:var(--primary);color:#fff;font-weight:800;padding:16px 34px;
-    border-radius:14px;text-decoration:none;font-size:16px;box-shadow:0 0 24px rgba(233,69,96,.5)}
-  .soon{color:var(--muted);font-size:14px;margin-top:14px}
-  .features{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;margin:50px 0}
-  .feat{background:var(--card);border:1px solid #2f2f52;border-radius:16px;padding:22px}
-  .feat h3{color:var(--gold);font-size:17px;margin-bottom:8px}
-  .feat p{color:var(--muted);font-size:14px;line-height:1.5}
-  footer{border-top:1px solid #2f2f52;margin-top:50px;padding:28px 0;text-align:center;color:var(--muted);font-size:14px}
-  footer a{color:var(--gold);text-decoration:none;margin:0 10px}
-  footer a:hover{text-decoration:underline}
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Manrope', system-ui, sans-serif;
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+  .wrap { max-width: 720px; margin: 0 auto; padding: 0 22px; }
+  h1, h2, h3, .display { font-family: 'Oswald', sans-serif; letter-spacing: 0.3px; }
+
+  /* ===== Hero ===== */
+  .hero {
+    position: relative;
+    text-align: center;
+    padding: 54px 22px 40px;
+    background:
+      radial-gradient(60% 50% at 50% 0%, rgba(83,52,131,0.55) 0%, rgba(83,52,131,0) 70%),
+      linear-gradient(180deg, var(--bg2) 0%, var(--bg) 60%);
+    overflow: hidden;
+  }
+  .confetti { position: absolute; border-radius: 50%; opacity: 0.8; }
+  .brand { display: inline-flex; align-items: center; gap: 12px; margin-bottom: 30px; }
+  .logo {
+    width: 52px; height: 52px; border-radius: 15px;
+    background: linear-gradient(145deg, #22223d, #0d1b3e);
+    border: 2px solid var(--accent);
+    display: grid; place-items: center;
+    font-family: 'Oswald'; font-weight: 700; font-size: 30px; color: var(--accent);
+    box-shadow: 0 6px 22px rgba(0,0,0,0.4);
+  }
+  .brand .name { font-family: 'Oswald'; font-weight: 700; font-size: 30px; letter-spacing: 2px; }
+  .tagline {
+    display: inline-block;
+    font-size: 13px; font-weight: 700; letter-spacing: 2.5px; text-transform: uppercase;
+    color: var(--accent); margin-bottom: 18px;
+  }
+  .hero h1 { font-size: clamp(34px, 9vw, 56px); font-weight: 700; line-height: 1.05; margin-bottom: 16px; }
+  .hero h1 .hl { color: var(--primary); }
+  .hero p.lead { color: var(--text-2); font-size: 17px; max-width: 520px; margin: 0 auto 26px; }
+  .cta-row { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+  .btn {
+    display: inline-block; cursor: pointer; border: none;
+    font-family: 'Manrope'; font-weight: 700; font-size: 16px;
+    padding: 15px 28px; border-radius: 14px; text-decoration: none; transition: transform .12s ease, filter .12s ease;
+  }
+  .btn-primary { background: linear-gradient(145deg, #f05570, var(--primary-dim)); color: #fff; box-shadow: 0 8px 26px rgba(233,69,96,0.35); }
+  .btn-primary:hover { transform: translateY(-2px); filter: brightness(1.05); }
+  .btn-ghost { background: transparent; color: var(--text); border: 1.5px solid var(--border); }
+
+  /* ===== Video ===== */
+  .video-section { padding: 10px 0 8px; }
+  .video-frame {
+    position: relative; width: 100%; aspect-ratio: 16 / 9;
+    background: linear-gradient(145deg, #16213e, #0d1b3e);
+    border: 1px solid var(--border); border-radius: 18px; overflow: hidden;
+    display: grid; place-items: center;
+  }
+  .video-frame iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+  .video-placeholder { text-align: center; color: var(--text-muted); padding: 24px; }
+  .video-placeholder .play { width: 64px; height: 64px; border-radius: 50%; background: rgba(255,211,105,0.12); border: 1.5px solid var(--accent); display: grid; place-items: center; margin: 0 auto 14px; color: var(--accent); font-size: 24px; }
+
+  /* ===== Secciones ===== */
+  section.block { padding: 44px 0 10px; }
+  .section-title { text-align: center; font-size: 28px; font-weight: 700; margin-bottom: 6px; }
+  .section-sub { text-align: center; color: var(--text-2); margin-bottom: 30px; }
+
+  .steps { display: grid; gap: 16px; }
+  @media (min-width: 620px) { .steps { grid-template-columns: repeat(3, 1fr); } }
+  .step {
+    background: var(--card); border: 1px solid var(--border); border-radius: 18px;
+    padding: 26px 22px; text-align: center;
+  }
+  .step .orb { width: 70px; height: 70px; border-radius: 50%; display: grid; place-items: center; margin: 0 auto 16px; font-size: 32px; }
+  .step h3 { font-size: 20px; font-weight: 600; margin-bottom: 8px; }
+  .step p { color: var(--text-2); font-size: 15px; }
+
+  /* ===== Formulario ===== */
+  .signup { background: linear-gradient(160deg, var(--surface), var(--card)); border: 1px solid var(--border); border-radius: 22px; padding: 30px 24px; margin-top: 10px; }
+  .signup h2 { font-size: 26px; text-align: center; margin-bottom: 8px; }
+  .signup .hint { text-align: center; color: var(--text-2); font-size: 15px; margin-bottom: 22px; }
+  .field { margin-bottom: 16px; }
+  .field label { display: block; font-size: 13px; font-weight: 600; color: var(--text-2); margin-bottom: 7px; }
+  .field input[type=text], .field input[type=email] {
+    width: 100%; padding: 14px 16px; border-radius: 12px;
+    background: #0a1430; border: 1.5px solid var(--border); color: var(--text);
+    font-family: 'Manrope'; font-size: 16px; outline: none; transition: border-color .15s ease;
+  }
+  .field input:focus { border-color: var(--primary); }
+  .field input::placeholder { color: var(--text-muted); }
+  .consent { display: flex; gap: 11px; align-items: flex-start; margin: 4px 0 20px; }
+  .consent input { width: 20px; height: 20px; margin-top: 2px; accent-color: var(--primary); flex-shrink: 0; }
+  .consent label { font-size: 13.5px; color: var(--text-2); }
+  .consent a { color: var(--accent); text-decoration: none; }
+  .consent a:hover { text-decoration: underline; }
+  .signup .btn-primary { width: 100%; }
+  .form-msg { text-align: center; font-size: 15px; font-weight: 600; margin-top: 16px; min-height: 22px; }
+  .form-msg.ok { color: var(--ok); }
+  .form-msg.err { color: var(--err); }
+
+  .success-box { display: none; text-align: center; padding: 14px 0; }
+  .success-box .check { width: 72px; height: 72px; border-radius: 50%; background: rgba(78,204,163,0.14); border: 1.5px solid var(--ok); display: grid; place-items: center; margin: 0 auto 18px; color: var(--ok); font-size: 36px; }
+  .success-box h2 { margin-bottom: 10px; }
+  .success-box p { color: var(--text-2); }
+
+  /* ===== Footer ===== */
+  footer { text-align: center; color: var(--text-muted); font-size: 13px; padding: 48px 22px 40px; }
+  footer a { color: var(--text-2); text-decoration: none; }
+  footer a:hover { color: var(--accent); }
+  footer .sep { margin: 0 8px; opacity: 0.5; }
 </style>
 </head>
 <body>
-<div class="wrap">
-  <header>
-    <div class="logo"><span class="crown">&#9819;</span><b>F</b></div>
-    <span class="brand">FESTON</span>
+
+  <!-- ===== HERO ===== -->
+  <header class="hero">
+    <span class="confetti" style="left:12%;top:18%;width:8px;height:8px;background:#ffd369"></span>
+    <span class="confetti" style="left:84%;top:14%;width:9px;height:9px;background:#e94560"></span>
+    <span class="confetti" style="left:78%;top:70%;width:7px;height:7px;background:#ffd369"></span>
+    <span class="confetti" style="left:20%;top:76%;width:7px;height:7px;background:#533483"></span>
+    <span class="confetti" style="left:50%;top:9%;width:6px;height:6px;background:#ffffff;opacity:0.6"></span>
+
+    <div class="wrap">
+      <div class="brand">
+        <div class="logo">F</div>
+        <span class="name">FESTON</span>
+      </div>
+      <div class="tagline">Gana la noche, sube al trono</div>
+      <h1>Pruébala <span class="hl">antes que nadie</span></h1>
+      <p class="lead">Feston es la app que convierte tus noches en competición: haz check-in en los locales, gana puntos y escala el ranking de tu ciudad. Estamos abriendo plazas para los primeros testers.</p>
+      <div class="cta-row">
+        <a href="#apuntarse" class="btn btn-primary">Quiero ser tester →</a>
+        <a href="#como" class="btn btn-ghost">Cómo funciona</a>
+      </div>
+    </div>
   </header>
 
-  <section class="hero">
-    <h1>FESTON</h1>
-    <div class="tag">Gana la noche, sube al trono</div>
-    <p class="lead">Feston convierte tus noches en un juego. Haz check-in en los locales donde sales,
-      gana puntos, sube de nivel y compite por ser el Rey (o Duque) de cada género musical y de tu ciudad.</p>
-    <div class="pills">
-      <span class="pill red">Check-in + puntos</span>
-      <span class="pill pur">Rankings en tiempo real</span>
-      <span class="pill out">Rey de la noche</span>
-    </div>
-    <a class="cta" href="#" aria-disabled="true">Próximamente en Google Play</a>
-    <div class="soon">Estamos puliendo los últimos detalles. ¡Muy pronto!</div>
-  </section>
+  <main class="wrap">
 
-  <section class="features">
-    <div class="feat"><h3>Check-in con foto</h3><p>Marca dónde estás con GPS y comparte el ambiente con una foto opcional.</p></div>
-    <div class="feat"><h3>Rankings por ciudad y género</h3><p>Compite en tiempo real y gana títulos de nobleza: Rey, Duque, Aspirante.</p></div>
-    <div class="feat"><h3>Locales candentes</h3><p>Descubre qué sitios están que arden ahora mismo y quién está saliendo.</p></div>
-    <div class="feat"><h3>Social</h3><p>Feed, menciones, guiños y retos para vivir la noche con la comunidad.</p></div>
-  </section>
+    <!-- ===== VIDEO ===== -->
+    <section class="video-section">
+      <div class="video-frame" id="videoFrame">
+        <!-- Para incrustar el vídeo, sustituye este bloque por:
+             <iframe src="https://www.youtube.com/embed/ID_DEL_VIDEO" title="Feston" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        -->
+        <div class="video-placeholder">
+          <div class="play">▶</div>
+          <div>Tráiler en camino</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== CÓMO FUNCIONA ===== -->
+    <section class="block" id="como">
+      <h2 class="section-title">Cómo funciona</h2>
+      <p class="section-sub">Tres pasos para empezar a reinar</p>
+      <div class="steps">
+        <div class="step">
+          <div class="orb" style="background:rgba(233,69,96,0.14)">🎵</div>
+          <h3>Tu música, tu noche</h3>
+          <p>Descubre locales que suenan como tú. Afinidad musical real, no algoritmos vacíos.</p>
+        </div>
+        <div class="step">
+          <div class="orb" style="background:rgba(83,52,131,0.25)">📍</div>
+          <h3>Check-in y puntos</h3>
+          <p>Verifica tu presencia, sube fotos y acumula puntos cada vez que sales de fiesta.</p>
+        </div>
+        <div class="step">
+          <div class="orb" style="background:rgba(255,211,105,0.15)">🏆</div>
+          <h3>Compite y domina</h3>
+          <p>Escala el ranking de tu ciudad, completa retos semanales y hazte leyenda nocturna.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== FORMULARIO ===== -->
+    <section class="block" id="apuntarse">
+      <div class="signup">
+        <div id="formView">
+          <h2>Únete a los testers</h2>
+          <p class="hint">Déjanos tu correo de <strong>Google (Gmail)</strong> — es el que Google Play necesita para darte acceso a la app.</p>
+
+          <form id="testerForm" novalidate>
+            <div class="field">
+              <label for="name">Nombre <span style="font-weight:400;color:var(--text-muted)">(opcional)</span></label>
+              <input type="text" id="name" name="name" autocomplete="name" placeholder="Cómo te llamas" maxlength="60" />
+            </div>
+            <div class="field">
+              <label for="email">Correo de Google (Gmail)</label>
+              <input type="email" id="email" name="email" autocomplete="email" placeholder="tucorreo@gmail.com" required />
+            </div>
+            <div class="consent">
+              <input type="checkbox" id="consent" name="consent" required />
+              <label for="consent">Acepto que me contactéis para el programa de pruebas y he leído la <a href="https://feston.es/privacidad.html" target="_blank" rel="noopener">Política de Privacidad</a>.</label>
+            </div>
+            <button type="submit" class="btn btn-primary" id="submitBtn">Apuntarme como tester</button>
+            <div class="form-msg" id="formMsg"></div>
+          </form>
+        </div>
+
+        <div class="success-box" id="successView">
+          <div class="check">✓</div>
+          <h2>¡Estás dentro!</h2>
+          <p>Te avisaremos por correo con el enlace para instalar Feston y empezar a probarla. Gracias por sumarte a la primera noche. 👑</p>
+        </div>
+      </div>
+    </section>
+  </main>
 
   <footer>
-    <p>&copy; <span id="y"></span> Feston · VLIN Studio</p>
-    <p style="margin-top:10px">
-      <a href="privacidad.html">Política de Privacidad</a> ·
-      <a href="terminos.html">Términos de Uso</a> ·
-      <a href="mailto:soporte@feston.es">soporte@feston.es</a>
-    </p>
+    <div>Feston · Gana la noche, sube al trono</div>
+    <div style="margin-top:10px">
+      <a href="https://feston.es/privacidad.html">Privacidad</a>
+      <span class="sep">·</span>
+      <a href="https://feston.es/terminos.html">Términos</a>
+      <span class="sep">·</span>
+      <a href="mailto:contacto@feston.es">contacto@feston.es</a>
+    </div>
   </footer>
-</div>
-<script>document.getElementById('y').textContent=new Date().getFullYear();</script>
+
+<script>
+  // ===== Configuración Supabase (clave pública, segura en cliente) =====
+  var SUPABASE_URL = 'https://mnenriicettlynnyqyzf.supabase.co';
+  var SUPABASE_KEY = 'sb_publishable_-4Grf9gtaNEaviuXlCEtfg_0y3w6aYj';
+
+  var form = document.getElementById('testerForm');
+  var msg = document.getElementById('formMsg');
+  var btn = document.getElementById('submitBtn');
+
+  function setMsg(text, kind) {
+    msg.textContent = text;
+    msg.className = 'form-msg' + (kind ? ' ' + kind : '');
+  }
+
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    setMsg('', '');
+
+    var name = document.getElementById('name').value.trim();
+    var email = document.getElementById('email').value.trim();
+    var consent = document.getElementById('consent').checked;
+
+    var emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+    if (!emailOk) { setMsg('Introduce un correo válido.', 'err'); return; }
+    if (!consent) { setMsg('Marca la casilla para continuar.', 'err'); return; }
+
+    btn.disabled = true;
+    btn.textContent = 'Enviando…';
+
+    fetch(SUPABASE_URL + '/rest/v1/tester_signups', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'apikey': SUPABASE_KEY,
+        'Authorization': 'Bearer ' + SUPABASE_KEY,
+        'Prefer': 'return=minimal'
+      },
+      body: JSON.stringify({
+        email: email.toLowerCase(),
+        name: name || null,
+        consent: true,
+        source: 'landing',
+        user_agent: navigator.userAgent.slice(0, 300)
+      })
+    }).then(function (res) {
+      if (res.ok) {
+        document.getElementById('formView').style.display = 'none';
+        document.getElementById('successView').style.display = 'block';
+        document.getElementById('apuntarse').scrollIntoView({ behavior: 'smooth' });
+      } else if (res.status === 409) {
+        // Correo duplicado -> ya estaba apuntado, lo tratamos como éxito.
+        document.getElementById('formView').style.display = 'none';
+        document.getElementById('successView').style.display = 'block';
+      } else {
+        btn.disabled = false;
+        btn.textContent = 'Apuntarme como tester';
+        setMsg('Algo ha fallado. Inténtalo de nuevo en un momento.', 'err');
+      }
+    }).catch(function () {
+      btn.disabled = false;
+      btn.textContent = 'Apuntarme como tester';
+      setMsg('Sin conexión. Revisa tu red e inténtalo de nuevo.', 'err');
+    });
+  });
+</script>
 </body>
 </html>
